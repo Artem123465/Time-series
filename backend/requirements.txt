@@ -1,0 +1,12 @@
+Django              # Фреймворк для разработки веб-приложений
+djangorestframework            # Создание REST API
+psycopg2-binary                # Для подключения PostgreSQL/TimescaleDB
+django-cors-headers            # Обработка CORS запросов между backend и frontend
+pandas                         # Обработка и анализ данных
+numpy                          # Базовые числовые операции
+scikit-learn                   # Библиотека для моделирования и расчета метрик
+statsmodels                    # Альтернатива для анализа временных рядов
+prophet                        # Прогнозирование временных рядов
+pytest
+pytest-django
+locust

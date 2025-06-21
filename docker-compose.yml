@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  db:
+    image: timescale/timescaledb:latest-pg14
+    container_name: timescale_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: timescale_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+
+  backend:
+    build: ./backend
+    container_name: backend
+    command: >
+      sh -c "python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    
+volumes:
+  db-data:
